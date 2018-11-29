@@ -8,6 +8,7 @@ install:
 - git clone $GOL_REPO gol_repo
 - mv gol_repo/src src/_src
 - ls -l src
+- node ./addHomepageToPackage.js
 script:
 - npm run build
 deploy:
