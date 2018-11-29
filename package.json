@@ -2,6 +2,7 @@
   "name": "gol-react",
   "version": "0.1.0",
   "private": true,
+  "homepage" : "https://step-tw.github.io/testgol",
   "dependencies": {
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
