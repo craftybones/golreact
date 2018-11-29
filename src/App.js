@@ -6,8 +6,8 @@ const genId = (a) => a.join("_");
 
 const genCells = (colors) => {
   let cells = [];
-  for(let i=0;i<10;i++) {
-    for(let j=0;j<10;j++) {
+  for(let i=0;i<17;i++) {
+    for(let j=0;j<17;j++) {
       cells.push(<Cell row={i} col={j} color={colors[`${i}_${j}`]}/>);
     }
   }
@@ -28,12 +28,11 @@ class App extends Component {
     this.state = {gen: this.props.gen};
   }
   componentDidMount() {
-    this.timerID = setInterval(()=>this.tick(),400)
+    this.timerID = setInterval(()=>this.tick(),180)
   }
   tick() {
     this.setState((state,props)=>{
-      let newState=nextGeneration(state.gen,{topLeft:[0,0],bottomRight:[10,10]});
-      console.log(newState);
+      let newState=nextGeneration(state.gen,{topLeft:[0,0],bottomRight:[17,17]});
       return {gen:newState};
     });
   }
