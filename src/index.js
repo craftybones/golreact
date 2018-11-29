@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-const coords=[[2,2],[2,3],[2,4],[3,1],[3,2],[3,3]];
+const coords=[[1,1],[1,2],[1,3]];
 ReactDOM.render(<App gen={coords}/>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
