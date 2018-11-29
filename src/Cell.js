@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 
 class Cell extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return <rect width="30" 
     height="30"
