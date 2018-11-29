@@ -1,25 +1,50 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Cell from './Cell';
+import {nextGeneration} from './_src/gameOfLife.js';
+
+const genId = (a) => a.join("_");
+
+const genCells = (colors) => {
+  let cells = [];
+  for(let i=0;i<10;i++) {
+    for(let j=0;j<10;j++) {
+      cells.push(<Cell row={i} col={j} color={colors[`${i}_${j}`]}/>);
+    }
+  }
+  return cells;
+}
+
+const toColourLookup=(cells) => {
+  let colors={};
+  cells.forEach(cell => {
+    colors[genId(cell)]="black"
+  });
+  return colors;
+}
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {gen: this.props.gen};
+  }
+  componentDidMount() {
+    this.timerID = setInterval(()=>this.tick(),400)
+  }
+  tick() {
+    this.setState((state,props)=>{
+      let newState=nextGeneration(state.gen,{topLeft:[0,0],bottomRight:[10,10]});
+      console.log(newState);
+      return {gen:newState};
+    });
+  }
   render() {
+    let colors=toColourLookup(this.state.gen)
+    let cells=genCells(colors);
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <svg width={800} height={800}>
+          {cells}
+        </svg>
       </div>
     );
   }
