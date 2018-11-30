@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Cell from './Cell';
-import {nextGeneration} from './_src/gameOfLife.js';
+const {nextGeneration} = require('./_src/gameOfLife.js');
 
 const genId = (a) => a.join("_");
 
